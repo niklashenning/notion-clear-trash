@@ -1,0 +1,14 @@
+{
+    "name": "Notion Clear Trash",
+    "version": "1.0.0",
+    "description": "",
+    "manifest_version": 3,
+    "content_scripts": [
+        {
+            "matches": ["*://www.notion.so/*", "https://www.notion.so/api/v3/*"],
+            "js": [
+                "js/content.js"
+            ]
+        }
+    ]
+}
