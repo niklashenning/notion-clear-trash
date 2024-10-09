@@ -1,5 +1,24 @@
 
 window.onload = function() {
+    window.setInterval(addClearTrashButton, 250);
+};
+
+
+function addClearTrashButton() {
+    let trashMenu = document.getElementsByClassName("notion-sidebar-trash-menu")[0];
+
+    if (trashMenu && !trashMenu.querySelector("#clear-trash-button")) {
+        let searchDiv = trashMenu.children[0].children[0].children[0];
+        let button = document.createElement("button");
+        button.innerHTML = "Clear Trash";
+        button.id = "clear-trash-button";
+        button.onclick = clearTrash;
+        searchDiv.appendChild(button);
+    }
+}
+
+
+function clearTrash() {
     getSpaceId().then(spaceId => {
         getTrashedPages(spaceId).then(trashedPages => { 
             for (let i = 0; i < trashedPages.length; i++) {
@@ -7,7 +26,7 @@ window.onload = function() {
             }
         });
     });
-};
+}
 
 
 async function getSpaceId() {
