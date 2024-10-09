@@ -1,9 +1,10 @@
 
 window.onload = function() {
-    getSpaceId().then(spaceId => { 
-        console.log(spaceId);
+    getSpaceId().then(spaceId => {
         getTrashedPages(spaceId).then(trashedPages => { 
-            console.log(trashedPages);
+            for (let i = 0; i < trashedPages.length; i++) {
+                deleteTrashedPage(spaceId, trashedPages[i]);   
+            }
         });
     });
 };
@@ -64,4 +65,28 @@ async function getTrashedPages(spaceId) {
     let response = await fetch(apiEndpoint, options);
     let json = await response.json();
     return json.results.map(object => object.id);
+}
+
+
+async function deleteTrashedPage(spaceId, pageId) {
+    let apiEndpoint = "https://www.notion.so/api/v3/deleteBlocks";
+    let options = {
+        headers: {
+            "cache-control": "no-cache",
+            "content-type": "application/json",
+        },
+        method: "POST",
+        body: `
+            {
+                "blocks": [
+                    {
+                        "id": "` + pageId + `",
+                        "spaceId": "` + spaceId + `"
+                    }
+                ],
+                "permanentlyDelete": true
+            }
+        `
+    }
+    fetch(apiEndpoint, options);
 }
