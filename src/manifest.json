@@ -8,6 +8,9 @@
             "matches": ["*://www.notion.so/*", "https://www.notion.so/api/v3/*"],
             "js": [
                 "js/content.js"
+            ],
+            "css": [
+                "css/content.css"
             ]
         }
     ]
