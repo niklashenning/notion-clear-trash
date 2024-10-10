@@ -1,4 +1,7 @@
 
+const pageLimit = 20;
+
+
 window.onload = function() {
     const callback = function(mutationsList) {
         for (let mutation of mutationsList) {
@@ -35,14 +38,21 @@ function addClearTrashButton() {
 }
 
 
-function clearTrash() {
-    getSpaceId().then(spaceId => {
-        getTrashedPages(spaceId).then(trashedPages => { 
-            for (let i = 0; i < trashedPages.length; i++) {
-                deleteTrashedPage(spaceId, trashedPages[i]);   
-            }
-        });
-    });
+async function clearTrash() {
+    let spaceId = await getSpaceId();
+    let trashCleared = false;
+
+    while (!trashCleared) {
+        let trashedPages = await getTrashedPages(spaceId);
+
+        for (let i = 0; i < trashedPages.length; i++) {
+            deleteTrashedPage(spaceId, trashedPages[i]);   
+        }
+        
+        if (trashedPages.length < pageLimit) {
+            trashCleared = true;
+        }
+    }
 }
 
 
@@ -75,7 +85,7 @@ async function getTrashedPages(spaceId) {
             {
                 "type": "BlocksInSpace",
                 "spaceId": "` + spaceId + `",
-                "limit": 20,
+                "limit": ` + pageLimit + `,
                 "filters": {
                     "isDeletedOnly": true,
                     "excludeTemplates": false,
