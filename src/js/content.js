@@ -1,6 +1,23 @@
 
 window.onload = function() {
-    window.setInterval(addClearTrashButton, 250);
+    const callback = function(mutationsList) {
+        for (let mutation of mutationsList) {
+            if (mutation.type === "childList") {
+                if (mutation.target.classList.contains("notion-overlay-container")
+                    && mutation.target.classList.contains("notion-default-overlay-container")) {
+                    addClearTrashButton();
+                }
+            }
+        }
+    };
+
+    const observerConfig = { 
+        childList: true,
+        subtree: true
+    };
+
+    const observer = new MutationObserver(callback);
+    observer.observe(document.body, observerConfig);
 };
 
 
