@@ -1,8 +1,28 @@
 #clear-trash-button {
-    color: #7B7B7B;
-    background: #191919;
-    padding: 5px 15px;
-    border: 1px solid #414141;
-    border-radius: 3px;
+    color: #999895;
+    background: #F7F7F5;
+    border: 1px solid #DFDFDE;
+    padding: 4px 13px;
+    border-radius: 4px;
     margin-right: 10px;
+    font-weight: 500;
+    transition: 100ms ease-in-out;
+}
+
+#clear-trash-button:hover,
+#clear-trash-button:disabled {
+    background: #F3F3F3;
+    border: 1px solid #cfcfcf;
+}
+
+body.dark #clear-trash-button {
+    color: #7B7B7B;
+    background: #252525;
+    border: 1px solid #414141;
+}
+
+body.dark #clear-trash-button:hover,
+body.dark #clear-trash-button:disabled  {
+    background: #313131;
+    border: 1px solid #4B4B4B;
 }
