@@ -1,5 +1,6 @@
 
 const pageLimit = 20;
+let clearTrashButton;
 
 
 window.onload = function() {
@@ -29,16 +30,19 @@ function addClearTrashButton() {
 
     if (trashMenu && !trashMenu.querySelector("#clear-trash-button")) {
         let searchDiv = trashMenu.children[0].children[0].children[0];
-        let button = document.createElement("button");
-        button.innerHTML = "Clear Trash";
-        button.id = "clear-trash-button";
-        button.onclick = clearTrash;
-        searchDiv.appendChild(button);
+        clearTrashButton = document.createElement("button");
+        clearTrashButton.innerHTML = "Clear Trash";
+        clearTrashButton.id = "clear-trash-button";
+        clearTrashButton.onclick = clearTrash;
+        searchDiv.appendChild(clearTrashButton);
     }
 }
 
 
 async function clearTrash() {
+    clearTrashButton.disabled = true;
+    clearTrashButton.innerHTML = "Clearing..";
+
     let spaceId = await getSpaceId();
     let trashCleared = false;
 
@@ -51,6 +55,8 @@ async function clearTrash() {
         
         if (trashedPages.length < pageLimit) {
             trashCleared = true;
+            clearTrashButton.disabled = false;
+            clearTrashButton.innerHTML = "Clear Trash";
         }
     }
 }
