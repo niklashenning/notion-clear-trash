@@ -5,8 +5,9 @@
     "manifest_version": 3,
     "content_scripts": [
         {
-            "matches": ["*://www.notion.so/*", "https://www.notion.so/api/v3/*"],
+            "matches": ["*://www.notion.so/*"],
             "js": [
+                "js/notion_api.js",
                 "js/content.js"
             ],
             "css": [
