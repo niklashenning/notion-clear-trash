@@ -47,10 +47,7 @@ async function clearTrash() {
 
     while (!trashCleared) {
         let trashedBlocks = await getTrashedBlocks(spaceId);
-
-        for (let i = 0; i < trashedBlocks.length; i++) {
-            deleteTrashedBlock(spaceId, trashedBlocks[i]);   
-        }
+        deleteTrashedBlocks(spaceId, trashedBlocks);   
         
         if (trashedBlocks.length < blockLimit) {
             trashCleared = true;

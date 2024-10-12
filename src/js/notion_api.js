@@ -61,7 +61,13 @@ async function getTrashedBlocks(spaceId) {
 }
 
 
-async function deleteTrashedBlock(spaceId, blockId) {
+async function deleteTrashedBlocks(spaceId, blockIds) {
+    let blocks = blockIds.map(blockId => {
+        return {
+            id: blockId,
+            space: spaceId
+        };
+    });
     let apiEndpoint = "https://www.notion.so/api/v3/deleteBlocks";
     let options = {
         headers: {
@@ -71,12 +77,7 @@ async function deleteTrashedBlock(spaceId, blockId) {
         method: "POST",
         body: `
             {
-                "blocks": [
-                    {
-                        "id": "` + blockId + `",
-                        "spaceId": "` + spaceId + `"
-                    }
-                ],
+                "blocks": ` + JSON.stringify(blocks) + `,
                 "permanentlyDelete": true
             }
         `
