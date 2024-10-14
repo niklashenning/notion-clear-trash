@@ -49,7 +49,7 @@ async function clearTrash() {
         let trashedBlocks = await getTrashedBlocks(spaceId);
         deleteTrashedBlocks(spaceId, trashedBlocks);   
         
-        if (trashedBlocks.length < blockLimit) {
+        if (trashedBlocks.length < BLOCK_LIMIT) {
             trashCleared = true;
 
             setTimeout(function() {
