@@ -2,6 +2,7 @@
 let clearTrashButton;
 
 
+// Set up mutation observer for trash menu on load
 window.onload = function() {
     const callback = function(mutationsList) {
         for (let mutation of mutationsList) {
@@ -24,6 +25,7 @@ window.onload = function() {
 };
 
 
+// Add clear trash button to trash menu
 function addClearTrashButton() {
     let trashMenu = document.getElementsByClassName("notion-sidebar-trash-menu")[0];
 
@@ -38,6 +40,7 @@ function addClearTrashButton() {
 }
 
 
+// Clear the trash
 async function clearTrash() {
     clearTrashButton.disabled = true;
     clearTrashButton.innerHTML = "Clearing..";

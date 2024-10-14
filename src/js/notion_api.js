@@ -3,6 +3,7 @@
 const BLOCK_LIMIT = 1000;
 
 
+// Get the space id needed for the other api calls
 async function getSpaceId() {
     let apiEndpoint = "https://www.notion.so/api/v3/loadUserContent";
     let options = {
@@ -20,6 +21,7 @@ async function getSpaceId() {
 };
 
 
+// Get the ids of the trashed blocks
 async function getTrashedBlocks(spaceId) {
     let apiEndpoint = "https://www.notion.so/api/v3/search";
     let options = {
@@ -59,6 +61,7 @@ async function getTrashedBlocks(spaceId) {
 }
 
 
+// Permanently delete trashed blocks by ids
 async function deleteTrashedBlocks(spaceId, blockIds) {
     let blocks = blockIds.map(blockId => {
         return {
