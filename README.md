@@ -6,7 +6,7 @@
 
 <div align="center">
 
-[![Version](https://img.shields.io/badge/version-v1.0.0-blue)](https://example.com)
+[![Version](https://img.shields.io/badge/version-v1.0.0-blue)](https://chromewebstore.google.com/detail/notion-clear-trash/koepefeihdlpllnicdhkahlppibfbjdd)
 [![Build](https://img.shields.io/badge/build-passing-neon)](https://github.com/niklashenning/notion-clear-trash)
 [![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 
@@ -18,7 +18,7 @@ Browser extension that adds the much-needed clear trash button to Notion.
 Now you can empty the whole trash with just one click.
 <br>
 <br>
-<a href="https://example.com"><strong>Install extension »</strong></a>
+<a href="https://chromewebstore.google.com/detail/notion-clear-trash/koepefeihdlpllnicdhkahlppibfbjdd"><strong>Install extension »</strong></a>
 </p>
 
 <p align="center">
@@ -27,7 +27,27 @@ Now you can empty the whole trash with just one click.
 
 
 ## Installation
-...
+
+### Chrome Web Store
+You can install the extension through the Chrome Web Store on browsers such as Google Chrome, Microsoft Edge, Opera, and Brave.
+Simply follow [this link](https://chromewebstore.google.com/detail/notion-clear-trash/koepefeihdlpllnicdhkahlppibfbjdd)
+and click on the "Add to Chrome" or "Get" button, depending on your browser.
+
+### Installing locally
+Alternatively, you can install the extension locally by following these steps:
+1. Clone the repository
+
+    ```
+    git clone https://github.com/niklashenning/notion-clear-trash.git
+    ```
+
+2. Open your browser's extension manager
+
+    `chrome://extensions/`, `edge://extensions/`, ...
+
+3. Enable developer mode to be able to load unpacked extensions
+
+4. Click the "Load unpacked" button and select the "src" folder of the cloned repository, which will load and enable the extension
 
 
 ## Usage
